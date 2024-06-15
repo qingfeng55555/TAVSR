@@ -4,7 +4,7 @@
 
 ## Environment:
 ```bash
-conda create -n stdf python=3.7 -y && conda activate stdf
+conda create -n tavsr python=3.7 -y && conda activate tavsr
 
 git clone --depth=1 https://github.com/ryanxingql/stdf-pytorch && cd stdf-pytorch/
 
@@ -53,7 +53,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 python test_all_video_module.py 
 ```
 ```
-python test_all_video_module.py 
+python test_all_video_module_cutsize.py 
 ```
 
 
