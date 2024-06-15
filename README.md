@@ -30,31 +30,31 @@ python simple_check.py
 
 ## Dataset preparing:
 
-### 1. Download the dataset through https://github.com/Archer-Tatsu/VQA-ODV.
+### 1. Download the dataset through https://github.com/ryanxingql/mfqev2.0/wiki/MFQEv2-Dataset, and then downsample and compress the corresponding video frames according to the description in the paper.
 
-### 2. Preparing data through the sequence extraction method:
+### 2. Generate LMDB data for training:
 ```
-python sequence_extraction.py
-```
-### 3. Generate LMDB data for training:
-```
-python create_lmdb.py --opt_path step1.yml
+python create_lmdb.py --opt_path option_NTIRE_2022.yml
 ```
 
 ## Examples of instructions required during training (4, 2 and single GPUs):
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 --master_port=12345 train_step1.py --opt_path step1.yml
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 --master_port=12345 train.py --opt_path option_NTIRE_2022.yml
 ```
 ```
-#CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=12354 train_step1 --opt_path step1.yml
+#CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=12354 train.py --opt_path option_NTIRE_2022.yml
 ```
 ```
-#CUDA_VISIBLE_DEVICES=0 python train_step1 --opt_path step1.yml
+#CUDA_VISIBLE_DEVICES=0 python train.py --opt_path option_NTIRE_2022.yml
 ```
 
 ## Test the trained model and obtain the corresponding indicator values:
 ```
-python PanEnh.py 
+python test_all_video_module.py 
 ```
+```
+python test_all_video_module.py 
+```
+
 
 
